@@ -1,38 +1,103 @@
+:root{
+  --dark-blue-bg: #11293f;
+  --signature-blue: #15b1ff;
+  --signature-blue-dark: #1278ab;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+}
+
+a{
+  color: white;
+  opacity: 70%;
+}
+
+a:hover{
+  opacity: 1;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex{
   display: flex;
-  flex-direction: column;
+}
+
+.navbar{
+  background-color: var(--dark-blue-bg);
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
   align-items: center;
+}
+
+.logo-nav{
+  width: 40px;
+  opacity: 70%;
+}
+
+.logo-nav:hover{
+  opacity: 1;
+}
+
+
+
+.home-page{
+  background-image: url(./assets/car-highway-night-blur.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.home-page-overlay{
+  background-color: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  gap: 50px;
+  padding: 3rem;
+}
+
+.logo{
+  width: 75px;
+}
+
+.slogan{
+  color: white;
+  text-align: center;
+}
+
+.btn{
+  padding: 1em 2.25em;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--signature-blue);
+  cursor: pointer;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn:hover{
+  background-color: var(--signature-blue-dark);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer{
+  background-color: var(--dark-blue-bg);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 12px;
+  justify-content: space-between;
 }
