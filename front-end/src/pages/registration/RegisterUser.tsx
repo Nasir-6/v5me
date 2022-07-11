@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface RegisterUserProps {
     userData: UserData
@@ -14,6 +14,11 @@ interface UserData{
 
 export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserData}) => {
 
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+    
+    // CheckBoxes
     const [isMechanic, setIsMechanic] = useState(false);
     const [isCarOwner, setIsCarOwner] = useState(false);
 
@@ -25,6 +30,15 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
         setIsCarOwner(!isCarOwner);
     };
 
+    useEffect(() => {
+        setUserData({
+            firstName: firstName,
+            lastName: lastName,
+            isMechanic: isMechanic,
+            isCarOwner: isCarOwner
+        })
+    }, [firstName, lastName, isMechanic, isCarOwner])
+
   return (
     <div>
       <form action="" className="register_user_form flex-column">
@@ -35,6 +49,8 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
           id="first_name_input"
           placeholder="First Name"
           className="input_field"
+          onBlur={(event) => setFirstName(event.target.value) }
+          required
         />
         <input
           type="text"
@@ -42,6 +58,8 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
           id="last_name_input"
           placeholder="Last Name"
           className="input_field"
+          onBlur={(event) => setLastName(event.target.value) }
+          required
         />
 
         <label htmlFor="mechanic_check_input" className="checkbox_container">
