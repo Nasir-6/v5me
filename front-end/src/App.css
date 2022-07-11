@@ -191,7 +191,9 @@ a:hover {
 
 /* Hide the browser's default checkbox */
 .checkbox_container input {
-  display: none;
+  display: absolute;
+  width: 0;
+  height: 0;
 }
 
 /* Create a custom checkbox */

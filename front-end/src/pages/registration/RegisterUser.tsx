@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
 
-interface RegisterUserProps {}
+interface RegisterUserProps {
+    userData: UserData
+    setUserData: React.Dispatch<React.SetStateAction<UserData>>
+}
 
-export const RegisterUser: React.FC<RegisterUserProps> = ({}) => {
+interface UserData{
+    firstName: string;
+    lastName: string;
+    isMechanic: boolean;
+    isCarOwner: boolean;
+}
+
+export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserData}) => {
 
     const [isMechanic, setIsMechanic] = useState(false);
     const [isCarOwner, setIsCarOwner] = useState(false);

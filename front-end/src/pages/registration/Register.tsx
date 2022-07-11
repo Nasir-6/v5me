@@ -8,21 +8,17 @@ interface RegisterProps {}
 
 export const Register: React.FC<RegisterProps> = ({}) => {
   const [page, setPage] = useState(0);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
+  const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
-    username: "",
-    nationality: "",
-    other: "",
+    isMechanic: false,
+    isCarOwner: false
   });
 
   const PageDisplay = () => {
     if (page === 0) {
       // return <RegisterUser formData={formData} setFormData={setFormData} />;
-      return <RegisterUser />;
+      return <RegisterUser userData={userData} setUserData={setUserData}/>;
     } else if (page === 1) {
       return <RegisterCar />;
     } else {
@@ -37,22 +33,23 @@ export const Register: React.FC<RegisterProps> = ({}) => {
       </a>
 
       {PageDisplay()}
+
       <div className="register_page-btns">
-        <button
+        {page != 0 ? <button
           className="btn"
-          disabled={page == 0}
           onClick={() => {
             setPage((currPage) => currPage - 1);
           }}
         >
           Prev
-        </button>
+        </button>:<></>}
+
         <button
           className="btn"
           onClick={() => {
             if (page === 2) {
               alert("FORM SUBMITTED");
-              console.log(formData);
+              console.log(userData);
             } else {
               setPage((currPage) => currPage + 1);
             }
