@@ -13,14 +13,14 @@ export const Home: React.FC<HomeProps> = ({}) => {
 
         <nav className="navbar flex-row">
         <a href="/"><img src={logo} alt="" className="logo-nav"/></a>
-        <Button text="Register" onClick={() => navigate("/register")}/>
+        <Button text="Sign Up" onClick={() => navigate("/signup")}/>
         </nav>
 
         <div className="home_page_overlay flex-column">
 
         <img src={logo} alt="" className="logo"/>
         <h2 className="slogan">Be the first to give your car the attention it deserves</h2>
-        <Button text="Try it out" onClick={() => navigate("/register")}/>
+        <Button text="Try it out" onClick={() => navigate("/signup")}/>
 
         </div>
         <footer className="footer flex-row">
