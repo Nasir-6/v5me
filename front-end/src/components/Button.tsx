@@ -2,12 +2,12 @@ import React from 'react'
 
 interface ButtonProps {
     text: string,
-    handleBtnClick: () => void;
+    onClick: () => void;
 
 }
 
-export const Button: React.FC<ButtonProps> = ({text, handleBtnClick}) => {
+export const Button: React.FC<ButtonProps> = ({text, onClick}) => {
         return (
-            <button className='btn' onClick={handleBtnClick}>{text}</button>
+            <button className='btn' onClick={onClick}>{text}</button>
         );
 }
