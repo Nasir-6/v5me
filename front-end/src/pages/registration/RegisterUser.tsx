@@ -4,17 +4,21 @@ interface RegisterUserProps {}
 
 export const RegisterUser: React.FC<RegisterUserProps> = ({}) => {
 
-    const [checked, setChecked] = useState(false);
+    const [isMechanic, setIsMechanic] = useState(false);
+    const [isCarOwner, setIsCarOwner] = useState(false);
 
-  const handleChange = () => {
-    setChecked(!checked);
-  };
+    const handleMechanicCheckbox = () => {
+        setIsMechanic(!isMechanic);
+    };
+
+    const handleCarOwnerCheckbox = () => {
+        setIsCarOwner(!isCarOwner);
+    };
 
   return (
     <div>
-      
       <form action="" className="register_user_form flex-column">
-      <h1>Register User</h1>
+        <h1>Register User</h1>
         <input
           type="text"
           name="first_name"
@@ -30,28 +34,29 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({}) => {
           className="input_field"
         />
 
-<label htmlFor='mechanic_check_input' className="checkbox_container" >
-        Are you registering as a Mechanic?
-        <input type="checkbox" name="mechanic_check" id="mechanic_check_input"
-        checked={checked}
-        onClick={handleChange}/>
-        <span className="checkmark"></span>
-    </label>
-    
+        <label htmlFor="mechanic_check_input" className="checkbox_container">
+          Are you registering as a Mechanic?
+          <input
+            type="checkbox"
+            name="mechanic_check"
+            id="mechanic_check_input"
+            checked={isMechanic}
+            onClick={handleMechanicCheckbox}
+          />
+          <span className="checkmark"></span>
+        </label>
 
-    {/* <div className="flex-row"> */}
-
-    <label htmlFor='car_owner_check_input' className="checkbox_container" >
-        Are you registering as a vehicle owner?
-        <input type="checkbox" name="car_owner_check" id="car_owner_check_input"
-        checked={checked}
-        onClick={handleChange}/>
-        <span className="checkmark"></span>
-    </label>
-
-
-
-
+        <label htmlFor="car_owner_check_input" className="checkbox_container">
+          Are you registering as a vehicle owner?
+          <input
+            type="checkbox"
+            name="car_owner_check"
+            id="car_owner_check_input"
+            checked={isCarOwner}
+            onClick={handleCarOwnerCheckbox}
+          />
+          <span className="checkmark"></span>
+        </label>
       </form>
     </div>
   );

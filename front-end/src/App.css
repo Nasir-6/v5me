@@ -181,8 +181,6 @@ a:hover {
 .checkbox_container {
   width: 325px;
   height: 22px;
-  display: flex;
-  gap: 1rem;
   position: relative;
   cursor: pointer;
   -webkit-user-select: none;
@@ -194,18 +192,12 @@ a:hover {
 /* Hide the browser's default checkbox */
 .checkbox_container input {
   display: none;
-  /* opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0; */
 }
 
 /* Create a custom checkbox */
 .checkmark {
-
   position:absolute;
   right: 0;
-  /* justify-self: flex-start; */
   height: 22px;
   width: 22px;
   background-color: #eee;
