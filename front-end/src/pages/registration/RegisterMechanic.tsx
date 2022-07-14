@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface RegisterMechanicProps {
   userData: UserData;
@@ -68,6 +69,10 @@ export const RegisterMechanic: React.FC<RegisterMechanicProps> = ({
 
   const formRef = useRef<HTMLFormElement>(null);
 
+
+//   For submitting form and navigating
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
@@ -83,6 +88,7 @@ export const RegisterMechanic: React.FC<RegisterMechanicProps> = ({
 
     //Send all data to DB and create!!!!
     console.log("Data Submitted to DB")
+
     
   };
 
@@ -153,8 +159,7 @@ export const RegisterMechanic: React.FC<RegisterMechanicProps> = ({
         className="checkbox_container flex-row"
       >
         <p className="checkbox_label">
-          I confirm this vehicle is registered to me and I may be asked to
-          provide verification later.{" "}
+        I confirm I am associated with this garage and I may be asked to provide verification later.
         </p>
         <input
           type="checkbox"

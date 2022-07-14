@@ -20,7 +20,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
 
         <img src={logo} alt="" className="logo"/>
         <h2 className="slogan">Be the first to give your car the attention it deserves</h2>
-        <Button text="Try it out" onClick={() => navigate("/signup")}/>
+        <Button text="Try it out" onClick={() => navigate("/dashboard")}/>
 
         </div>
         <footer className="footer flex-row">

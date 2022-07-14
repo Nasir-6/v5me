@@ -29,7 +29,7 @@ export const SignUp: React.FC<SignUpProps> = ({}) => {
         className="signup_form flex-column"
         onSubmit={handleFirstForm}
       >
-        <h1>Sign Up</h1>
+        <h1 className="sign_page-header">Sign Up</h1>
         <input
           type="email"
           name="email"
