@@ -15,14 +15,23 @@ export const Register: React.FC<RegisterProps> = ({}) => {
     isCarOwner: false
   });
 
+  const [mechanicData, setMechanicData] = useState({
+    MOTLicenseNumber: "",
+    tradingName: "",
+    firstLineOfAddress: "",
+    city: "",
+    postcode: "",
+    mechanicHasAgreed: false
+  });
+
   const PageDisplay = () => {
     if (page === 0) {
       // return <RegisterUser formData={formData} setFormData={setFormData} />;
-      return <RegisterUser userData={userData} setUserData={setUserData}/>;
+      return <RegisterUser userData={userData} setUserData={setUserData} setPage={setPage}/>;
     } else if (page === 1) {
+      return <RegisterMechanic  userData={userData} mechanicData={mechanicData} setMechanicData={setMechanicData}  setPage={setPage}/>;
+    } else if (page === 2){
       return <RegisterCar />;
-    } else {
-      return <RegisterMechanic />;
     }
   };
 
@@ -34,30 +43,16 @@ export const Register: React.FC<RegisterProps> = ({}) => {
 
       {PageDisplay()}
 
-      <div className="register_page-btns">
-        {page != 0 ? <button
-          className="btn"
-          onClick={() => {
-            setPage((currPage) => currPage - 1);
-          }}
-        >
-          Prev
-        </button>:<></>}
+      {/* <div className="register_page-btns">
+        {page != 0 ? 
+        <button className="btn" onClick={() => {
+            userData.isMechanic ? setPage((currPage) => currPage - 1) : setPage((currPage) => currPage - 2)
+          }}>Prev </button>
+          :
+          <></>}
 
-        <button
-          className="btn"
-          onClick={() => {
-            if (page === 2) {
-              alert("FORM SUBMITTED");
-              console.log(userData);
-            } else {
-              setPage((currPage) => currPage + 1);
-            }
-          }}
-        >
-          {page === 2 ? "Submit" : "Next"}
-        </button>
-      </div>
+        
+      </div> */}
     </div>
   );
 };

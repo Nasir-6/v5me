@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface RegisterUserProps {
     userData: UserData
     setUserData: React.Dispatch<React.SetStateAction<UserData>>
+    setPage: React.Dispatch<React.SetStateAction<number>>
 }
 
 interface UserData{
@@ -12,15 +13,15 @@ interface UserData{
     isCarOwner: boolean;
 }
 
-export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserData}) => {
+export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserData, setPage}) => {
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [firstName, setFirstName] = useState(userData.firstName);
+    const [lastName, setLastName] = useState(userData.lastName);
 
     
     // CheckBoxes
-    const [isMechanic, setIsMechanic] = useState(false);
-    const [isCarOwner, setIsCarOwner] = useState(false);
+    const [isMechanic, setIsMechanic] = useState(userData.isMechanic);
+    const [isCarOwner, setIsCarOwner] = useState(userData.isCarOwner);
 
     const handleMechanicCheckbox = () => {
         setIsMechanic(!isMechanic);
@@ -39,9 +40,31 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
         })
     }, [firstName, lastName, isMechanic, isCarOwner])
 
+
+    const formRef = useRef<HTMLFormElement>(null);
+
+    const handleSubmit = (event: React.SyntheticEvent) => {
+        event.preventDefault();
+
+ 
+    
+        // CAN Redirect to Verify email page here!!
+        if(!isMechanic && !isCarOwner){
+            alert("Please sign up as a Mechanic or Car Owner");
+            console.log("If loop worked");
+            return;
+        }
+
+        // If mechanic - Go to mechanic page (Page 1)
+        if(isMechanic) setPage(1);
+        // IF not mechanics & Car owner (go to page 2)
+        if(!isMechanic && isCarOwner) setPage(2)
+
+      };
+
   return (
-    <div>
-      <form action="" className="register_user_form flex-column">
+    
+      <form action="" className="register_user_form flex-column" onSubmit={handleSubmit} ref={formRef}>
         <h1>Register User</h1>
         <input
           type="text"
@@ -49,7 +72,8 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
           id="first_name_input"
           placeholder="First Name"
           className="input_field"
-          onBlur={(event) => setFirstName(event.target.value) }
+          onChange={(event) => setFirstName(event.target.value) }
+          value={firstName}
           required
         />
         <input
@@ -58,11 +82,12 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
           id="last_name_input"
           placeholder="Last Name"
           className="input_field"
-          onBlur={(event) => setLastName(event.target.value) }
+          onChange={(event) => setLastName(event.target.value) }
+          value={lastName}
           required
         />
 
-        <label htmlFor="mechanic_check_input" className="checkbox_container">
+        <label htmlFor="mechanic_check_input" className="checkbox_container flex-row">
           Are you registering as a Mechanic?
           <input
             type="checkbox"
@@ -74,7 +99,7 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
           <span className="checkmark"></span>
         </label>
 
-        <label htmlFor="car_owner_check_input" className="checkbox_container">
+        <label htmlFor="car_owner_check_input" className="checkbox_container flex-row">
           Are you registering as a vehicle owner?
           <input
             type="checkbox"
@@ -85,7 +110,9 @@ export const RegisterUser: React.FC<RegisterUserProps> = ({ userData, setUserDat
           />
           <span className="checkmark"></span>
         </label>
+
+        <input type="submit" className="btn" value="Next"/> 
       </form>
-    </div>
+    
   );
 };
