@@ -24,6 +24,14 @@ export const Register: React.FC<RegisterProps> = ({}) => {
     mechanicHasAgreed: false
   });
 
+  const [carData, setCarData] = useState({
+    regNumber: "",
+    make: "",
+    engineSize: "",
+    nickName: "",
+    ownerHasAgreed: false,
+  });
+
   const PageDisplay = () => {
     if (page === 0) {
       // return <RegisterUser formData={formData} setFormData={setFormData} />;
@@ -31,7 +39,7 @@ export const Register: React.FC<RegisterProps> = ({}) => {
     } else if (page === 1) {
       return <RegisterMechanic  userData={userData} mechanicData={mechanicData} setMechanicData={setMechanicData}  setPage={setPage}/>;
     } else if (page === 2){
-      return <RegisterCar />;
+      return <RegisterCar userData={userData} carData={carData} setCarData={setCarData}  setPage={setPage}/>;
     }
   };
 

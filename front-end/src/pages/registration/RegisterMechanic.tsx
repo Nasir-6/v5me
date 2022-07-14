@@ -48,17 +48,6 @@ export const RegisterMechanic: React.FC<RegisterMechanicProps> = ({
     setMechanicHasAgreed(!mechanicHasAgreed);
   };
 
-  const [isMechanic, setIsMechanic] = useState(userData.isMechanic);
-  const [isCarOwner, setIsCarOwner] = useState(userData.isCarOwner);
-
-  const handleMechanicCheckbox = () => {
-    setIsMechanic(!isMechanic);
-  };
-
-  const handleCarOwnerCheckbox = () => {
-    setIsCarOwner(!isCarOwner);
-  };
-
   useEffect(() => {
     setMechanicData({
       MOTLicenseNumber: MOTLicenseNumber,
@@ -177,7 +166,7 @@ export const RegisterMechanic: React.FC<RegisterMechanicProps> = ({
         <span className="checkmark"></span>
       </label>
 
-      <button className="btn" onClick={() => {setPage((currPage) => 0)}}>Prev </button>
+      <button className="btn" onClick={() => setPage(0)}>Prev </button>
 
       <input type="submit" className="btn" value={userData.isCarOwner ? "Next" : "Submit"} />
     </form>
